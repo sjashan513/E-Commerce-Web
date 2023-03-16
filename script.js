@@ -12,7 +12,10 @@ const feBoxContainer = document.getElementById("feBoxContainer");
 let counter = 0;
 let timer;
 function slideFeBox() {
-  feBoxUl.style.transform = `translateX(-${counter * 1000}px)`;
+  console.log(feBoxContainer.offsetWidth);
+  feBoxUl.style.transform = `translateX(-${
+    counter * feBoxContainer.offsetWidth
+  }px)`;
   if (counter === boxArray.length - 1) {
     counter = 0;
   } else {
