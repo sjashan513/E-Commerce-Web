@@ -9,6 +9,7 @@
   --blueSky: #96faff;
   --lightGreen: #b1ffaa;
   --heroDark: #7b5269;
+  --titleWidth: 0;
 }
 
 * {
@@ -19,7 +20,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: "smooth";
 }
 ::-webkit-scrollbar {
   display: none;
@@ -182,43 +183,44 @@ body {
   bottom: 31%;
   left: 5rem;
   margin-top: 0.5em;
+  transition: all 0.3s ease;
 }
 
 .shopNow:hover {
   cursor: pointer;
+  font-weight: 600;
+  filter: brightness(1.001);
+  font-size: 1.4rem;
 }
 
 /* Feature section */
 
 .feature {
   width: 100%;
-  padding: 30px 80px;
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-
+.feature::-webkit-scrollbar {
+  display: none;
+}
 .feBoxContainer {
-  width: 1000px;
-  overflow: hidden;
-  position: relative;
-}
-.feBoxContainer ul {
+  width: 100%;
   display: flex;
-  list-style: none;
-  transition: all 1s ease-in-out;
 }
+
 .fe-box {
+  flex-shrink: 0;
   display: flex;
-  width: 1000px;
+  width: 100%;
   overflow: hidden;
+  justify-content: center;
   flex-direction: row;
   align-items: flex-start;
-  padding: 40px 25px;
+  padding: 40px 70px;
   background-color: #fff;
-  box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.09);
 }
 
 .fe-box .text {
@@ -324,7 +326,8 @@ body {
 .feaProducts {
   width: 100%;
   display: grid;
-  grid-template-rows: 30% 70%;
+  height: fit-content;
+  grid-template-rows: 1fr 3fr;
   padding: 0 80px;
 }
 .feaProducts .titleOfSec {
@@ -333,6 +336,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.titleOfSec {
+  position: relative;
+  transition: all 0.3s linear;
 }
 .titleOfSec h2 {
   font-size: 4.5rem;
@@ -344,10 +352,35 @@ body {
   font-size: 1.3rem;
   font-weight: 400;
 }
-
+.titleFea::after {
+  content: "";
+  width: var(--titleWidth);
+  height: 3px;
+  background-color: #088178;
+  transition: width 1s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.titleNew::after {
+  content: "";
+  width: var(--titleWidth);
+  height: 3px;
+  background-color: #088178;
+  transition: width 1s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
 .feaProducts .productsContainer {
   width: 100%;
-  height: fit-content;
+  height: auto;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -363,6 +396,7 @@ body {
   box-shadow: 3px 3px 19px -5px rgba(0, 0, 0, 0.2);
   position: relative;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 .product img {
   width: 300px;
@@ -415,7 +449,206 @@ body {
   transform: rotate(-30deg);
 }
 .product:hover {
-  box-shadow: 3px 3px 19px -5px #000000;
-  z-index: 1000;
+  box-shadow: 3px 3px 19px -5px rgba(0, 0, 0, 0.5);
   transform: scale(1.005);
+}
+
+/*Explore More*/
+.exploreMore {
+  width: 100%;
+  height: 325px;
+  margin: 8rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./img/banner/b2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.exploreMore .textExp {
+  text-align: center;
+}
+
+.textExp h2 {
+  font-weight: 600;
+  font-size: 3.5rem;
+  color: white;
+  margin-bottom: 25px;
+}
+.textExp h2 span {
+  color: red;
+}
+.textExp h4 {
+  color: white;
+  font-weight: 450;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+.exploreMore .expMoreBtn {
+  border: none;
+  background-color: white;
+  font-size: 1.3rem;
+  padding: 0.75em 1.5em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+.expMoreBtn:hover {
+  background-color: var(--green);
+  color: white;
+}
+
+/*Banner Section*/
+.banner {
+  padding: 5rem 80px;
+  display: grid;
+  grid-template-rows: 70% 30%;
+  height: max-content;
+}
+.firstContainerBanner {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+  justify-items: center;
+}
+.secondContainerBanner {
+  display: flex;
+  height: max-content;
+  justify-content: space-around;
+}
+.bannerContainer {
+  width: 800px;
+  height: 450px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.bannerContainer .textBan {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25em;
+}
+.textBan h5 {
+  color: white;
+  font-weight: 200;
+  font-size: 1.75rem;
+  margin-bottom: 0.5em;
+}
+.textBan h3 {
+  color: white;
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 0.3em;
+}
+.textBan p {
+  margin: 0;
+  color: white;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.bannerContainer .bannerBtn {
+  border: 1px solid white;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.6em 1.25em;
+  font-weight: 500;
+  background-color: transparent;
+  transition: all 0.35s linear;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.bannerContainer:hover > .bannerBtn {
+  background-color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.secondContainerBanner > .bannerContainer {
+  width: 500px;
+  height: 250px;
+}
+.secondContainerBanner > .bannerContainer > .textBan {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.secondContainerBanner > .bannerContainer > .textBan > h5 {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+/*Sing Up Section*/
+
+.singUpSec {
+  width: 100%;
+  height: 200px;
+  background-color: #041e42;
+  background-image: url(./img/banner/b14.png);
+  background-repeat: no-repeat;
+  background-position: 20% 30%;
+  object-fit: cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 115px;
+}
+
+.singUpSec .textSignUp {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.textSignUp h4 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.textSignUp p {
+  margin: 15px 0 0 0;
+  font-size: 1.5rem;
+}
+.textSignUp p span {
+  color: gold;
+}
+.signUpForm {
+  width: 550px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.signUpForm .emailLabel #email {
+  font-size: 1.2rem;
+  width: 450px;
+  padding: 10px;
+  height: 50px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+#email:focus {
+  outline: none;
+}
+.signUpForm .signUpbtn {
+  width: 100%;
+  height: 50px;
+  border-radius: 0 5px 5px 0;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+  border: none;
+  background-color: var(--green);
 }

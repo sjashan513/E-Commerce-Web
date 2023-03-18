@@ -1,38 +1,59 @@
 // Script for navigation bar
 
-const box1 = document.getElementById("box1");
-const box2 = document.getElementById("box2");
-const box3 = document.getElementById("box3");
-const box4 = document.getElementById("box4");
-const box5 = document.getElementById("box5");
-const box6 = document.getElementById("box6");
-const boxArray = [box1, box2, box3, box4, box5, box6];
-const feBoxUl = document.querySelector(".feBoxUl");
-const feBoxContainer = document.getElementById("feBoxContainer");
-let counter = 0;
-let timer;
-function slideFeBox() {
-  console.log(feBoxContainer.offsetWidth);
-  feBoxUl.style.transform = `translateX(-${
-    counter * feBoxContainer.offsetWidth
-  }px)`;
-  if (counter === boxArray.length - 1) {
-    counter = 0;
+//NavBar Variables
+const header = document.getElementById("header");
+
+// Feature Var
+const feaContainer = document.querySelector(".feBoxContainer");
+const feaContainerIndividual = document.querySelectorAll(".fe-box");
+
+//FeaturedProducts Variables:
+const feaProducts = document.getElementById("feaProducts");
+const productContainer = document.getElementById("productsContainer");
+const underlineVar = document.querySelectorAll(".underline");
+const underlineNew = document.querySelectorAll(".underlineNewArrival");
+let titleFea = document.querySelector(".titleFea");
+let titleNew = document.querySelector(".titleNew");
+// Feature Functions
+let counter = 1;
+let timer = 3000;
+let widthFeaBox = feaContainerIndividual[0].clientWidth;
+
+window.addEventListener("resize", () => {
+  widthFeaBox = feaContainerIndividual[0].clientWidth;
+});
+
+console.log(feaContainerIndividual.length);
+function slide() {
+  feaContainer.style.transform = `translateX(-${widthFeaBox * counter}px)`;
+  feaContainer.style.transition = "transform .3s";
+  ++counter;
+  if (counter === feaContainerIndividual.length) {
+    setTimeout(() => {
+      feaContainer.style.transform = `translateX(0px)`;
+      feaContainer.style.transition = " none";
+    }, 1000);
+    counter = 1;
+  }
+}
+setInterval(() => {
+  slide();
+}, timer);
+//FeaturedProducts Functions:
+
+function underlineFunc(elementTop, title) {
+  let windowHeight = window.innerHeight;
+  let elementVisible = 275;
+  if (elementTop < windowHeight - elementVisible) {
+    title.style.setProperty("--titleWidth", `${70}%`);
   } else {
-    counter++;
+    title.style.setProperty("--titleWidth", 0);
   }
 }
 
-window.onload = () => {
-  timer = setInterval(slideFeBox, 2000);
-};
-
-function pauseTimer() {
-  clearInterval(timer);
-}
-feBoxContainer.addEventListener("mousedown", () => {
-  pauseTimer();
-  feBoxContainer.addEventListener("mouseup", () => {
-    timer = setInterval(slideFeBox, 2000);
-  });
+window.addEventListener("scroll", () => {
+  elementTopFea = underlineVar[0].getBoundingClientRect().top;
+  elementTopNew = underlineNew[0].getBoundingClientRect().top;
+  underlineFunc(elementTopFea, titleFea);
+  underlineFunc(elementTopNew, titleNew);
 });
