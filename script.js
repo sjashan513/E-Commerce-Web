@@ -2,6 +2,11 @@
 
 //NavBar Variables
 const header = document.getElementById("header");
+const navOverlay = document.querySelector(".navOverlay");
+const menuBtn = document.querySelector(".barsContainer");
+const barsBefore = document.querySelector(".barsBefore");
+const bars = document.querySelector(".bars");
+const barsAfter = document.querySelector(".barsAfter");
 
 // Feature Var
 const feaContainer = document.querySelector(".feBoxContainer");
@@ -14,6 +19,19 @@ const underlineVar = document.querySelectorAll(".underline");
 const underlineNew = document.querySelectorAll(".underlineNewArrival");
 let titleFea = document.querySelector(".titleFea");
 let titleNew = document.querySelector(".titleNew");
+
+//->>>>>>>>>>>FUNCTIONS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//Header{
+
+menuBtn.addEventListener("click", () => {
+  navOverlay.classList.toggle("navOverlay--show");
+  bars.classList.toggle("bars-active");
+  barsBefore.classList.toggle("barsBefore-active");
+  barsAfter.classList.toggle("barsAfter-active");
+});
+
+//}
+
 // Feature Functions
 let counter = 1;
 let timer = 3000;
@@ -51,7 +69,7 @@ function underlineFunc(elementTop, title) {
   }
 }
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll", (e) => {
   elementTopFea = underlineVar[0].getBoundingClientRect().top;
   elementTopNew = underlineNew[0].getBoundingClientRect().top;
   underlineFunc(elementTopFea, titleFea);

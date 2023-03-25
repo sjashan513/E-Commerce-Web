@@ -21,19 +21,22 @@
     <!-- #region Header-->
     <header class="header" id="header">
       <a href="#"><img src="./img/logo.webp" alt="" class="logo" /></a>
-      <div>
-        <ul class="navbar" id="navbar">
+      <div class="navContainer">
+        <ul class="navbar navOverlay" id="navbar">
           <li><a class="active" href="index.html">Home</a></li>
           <li><a href="shop.html">Shop</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li>
-            <a class="cart" href="cart.html"
-              ><i class="fa-solid fa-cart-shopping"></i
-            ></a>
-          </li>
         </ul>
+        <a class="cart" href="cart.html"
+        ><i class="fa-solid fa-cart-shopping"></i
+          ></a>
+        <div class="barsContainer">
+          <div class="barsBefore"></div>
+          <div class="bars"></div>
+          <div class="barsAfter"></div>
+        </div>
       </div>
     </header>
     <!-- #endregion -->
@@ -42,7 +45,7 @@
       <h4>Trade-in-offer</h4>
       <h2>Super value deals</h2>
       <h1>On all products</h1>
-      <p>Save morewith cupons & up to 70% off!</p>
+      <p>Save morewith cupons & up to <span><br class="mobile">70% off!</span></p>
       <button class="shopNow">Shop Now</button>
     </section>
     <!-- #endregion -->

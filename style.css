@@ -10,6 +10,7 @@
   --lightGreen: #b1ffaa;
   --heroDark: #7b5269;
   --titleWidth: 0;
+  --menuBarsHeaderWidth: 0;
 }
 
 * {
@@ -75,6 +76,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Header section*/
 .header {
   display: flex;
   align-items: center;
@@ -88,6 +90,9 @@ body {
   left: 0;
 }
 
+.navContainer {
+  display: flex;
+}
 .navbar {
   display: flex;
   align-items: center;
@@ -108,7 +113,8 @@ body {
   color: var(--green);
 }
 
-.navbar li a:hover {
+.navbar li a:hover,
+.navContainer .cart:hover {
   font-size: 25px;
 }
 .navbar li a::after {
@@ -128,9 +134,119 @@ body {
   width: 70%;
 }
 
-.navbar li .cart:hover::after {
-  content: "";
-  width: 0;
+.navContainer .cart {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1a1a1a;
+  transition: 0.3s ease;
+}
+.cart:hover {
+  color: var(--green);
+}
+/*Header section media query>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 0;
+    position: relative;
+    width: 100vw;
+  }
+  .logo {
+    margin: 25px 0 25px 30px;
+  }
+  .navContainer {
+    display: flex;
+    align-items: center;
+    margin: 25px 30px 25px 0;
+  }
+  .navOverlay {
+    width: 65%;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 100px;
+    padding-left: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .navOverlay li {
+    margin-bottom: 15px;
+  }
+  .navOverlay li a {
+    font-size: 25px;
+  }
+  .navOverlay--show {
+    opacity: 1;
+    pointer-events: unset;
+  }
+  .barsContainer {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .barsContainer .bars {
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    border-radius: 10px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: var(--green);
+    transition: all 0.5s linear;
+  }
+  .barsAfter,
+  .barsBefore {
+    width: 40px;
+    height: 4px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: var(--black);
+    transition: all 0.5s ease;
+  }
+  .barsAfter {
+    bottom: 7.5px;
+  }
+  .barsBefore {
+    top: 7.5px;
+  }
+  .bars-active {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  .barsBefore-active {
+    width: 35px;
+    top: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    transform-origin: right bottom;
+    transform: rotate(35deg) translate(1px, 0px);
+    background-color: var(--green);
+  }
+  .barsAfter-active {
+    width: 35px;
+    top: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    transform-origin: right top;
+    transform: rotate(-35deg) translate(0px, 0px);
+  }
+  .navContainer .cart {
+    opacity: 1;
+    font-size: 1.5rem;
+    padding-right: 20px;
+  }
 }
 
 /* Section 1 hero */
@@ -193,6 +309,46 @@ body {
   filter: brightness(1.001);
   font-size: 1.4rem;
 }
+.hero p span .mobile {
+  display: none;
+}
+/* Section 1 hero media query ->->->->->-> */
+@media screen and (max-width: 480px) {
+  .hero {
+    height: 95vh;
+    width: 100%;
+    background-position: -62% 0;
+    justify-content: flex-start;
+    padding: 40px 30px;
+  }
+  .hero h4 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .hero h2 {
+    font-size: 3.5rem;
+  }
+  .hero h1 {
+    font-size: 4rem;
+  }
+  .hero p {
+    font-size: 1.3rem;
+  }
+  .hero p span {
+    color: red;
+    font-weight: 500;
+  }
+  .hero p span .mobile {
+    display: block;
+    float: left;
+  }
+  .hero .shopNow {
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
 
 /* Feature section */
 
@@ -209,6 +365,7 @@ body {
 }
 .feBoxContainer {
   width: 100%;
+  height: 100%;
   display: flex;
 }
 
@@ -256,78 +413,29 @@ body {
   background-color: #fff2e5;
 }
 
-.arrowLeft {
-  position: absolute;
-  top: 0;
-  left: 40px;
-  bottom: 0;
-  margin: auto;
-  width: 100px;
-  height: 8px;
-  background-color: var(--greenBox2);
-  cursor: pointer;
-  border-radius: 5px;
+/* Features Section MediaQuery ->->->->-> */
+@media screen and (max-width: 480px) {
+  .feature {
+    height: 250px;
+  }
+  .fe-box .text p {
+    display: none;
+  }
+  .fe-box {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+  }
+  .fe-box .text {
+    margin-bottom: 20px;
+  }
 }
-.arrowLeft::after,
-.arrowLeft::before {
-  content: "";
-  width: 40px;
-  height: 8px;
-  position: absolute;
-  border-radius: 5px;
-  background-color: var(--greenBox2);
-}
-.arrowLeft::after {
-  rotate: 45deg;
-  transform-origin: left top;
-}
-.arrowLeft::before {
-  rotate: -45deg;
-  transform-origin: left bottom;
-}
-.arrowRight {
-  position: absolute;
-  top: 0;
-  right: 40px;
-  bottom: 0;
-  margin: auto;
-  width: 100px;
-  height: 8px;
-  background-color: var(--greenBox2);
-  cursor: pointer;
-  rotate: 180deg;
-  border-radius: 5px;
-}
-.arrowRight::after,
-.arrowRight::before {
-  content: "";
-  width: 40px;
-  height: 8px;
-  border-radius: 5px;
-  position: absolute;
-  background-color: var(--greenBox2);
-}
-.arrowRight::after {
-  rotate: 45deg;
-  transform-origin: left top;
-}
-.arrowRight::before {
-  rotate: -45deg;
-  transform-origin: left bottom;
-}
-.arrowHover {
-  transition: transform 0.3s ease-in-out;
-  z-index: 10;
-}
-.arrowHover:hover {
-  transform: scale(1.2);
-}
-
 /* Featured Products*/
 .feaProducts {
   width: 100%;
   display: grid;
-  height: fit-content;
+  height: max-content;
   grid-template-rows: 1fr 3fr;
   padding: 0 80px;
 }
@@ -336,10 +444,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .titleOfSec {
+  height: max-content;
   position: relative;
   transition: all 0.3s linear;
 }
@@ -453,6 +562,24 @@ body {
   box-shadow: 3px 3px 19px -5px rgba(0, 0, 0, 0.5);
   transform: scale(1.005);
 }
+/* Featured Products media query ->->->->*/
+
+@media screen and (max-width: 480px) {
+  .feaProducts {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .titleOfSec h2 {
+    font-size: 2.4rem;
+  }
+  .titleOfSec p {
+    font-size: 1rem;
+  }
+  .feaProducts .productsContainer {
+    grid-template-columns: 1fr;
+  }
+}
 
 /*Explore More*/
 .exploreMore {
@@ -502,9 +629,23 @@ body {
   background-color: var(--green);
   color: white;
 }
+/* Explore More  media query ->->->->*/
+
+@media screen and (max-width: 480px) {
+  .exploreMore h4 {
+    font-size: 1.4rem;
+  }
+  .exploreMore h2 {
+    font-size: 2.75rem;
+  }
+  .exploreMore .expMoreBtn {
+    font-size: 1rem;
+  }
+}
 
 /*Banner Section*/
 .banner {
+  width: 100vw;
   padding: 5rem 80px;
   display: grid;
   grid-template-rows: 70% 30%;
@@ -587,6 +728,34 @@ body {
   font-weight: 500;
   font-size: 1.5rem;
 }
+/* Banner Section media query ->->->->*/
+
+@media screen and (max-width: 480px) {
+  .banner {
+    padding: 2rem 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .banner .firstContainerBanner {
+    display: flex;
+    width: 92vw;
+    flex-direction: column;
+  }
+  .firstContainerBanner .bannerContainer {
+    width: 100%;
+  }
+  .banner .secondContainerBanner {
+    display: flex;
+    flex-direction: column;
+    width: 92vw;
+  }
+  .secondContainerBanner .bannerContainer {
+    width: 100%;
+  }
+  .bannerContainer {
+    margin-bottom: 20px;
+  }
+}
 
 /*Sing Up Section*/
 
@@ -652,6 +821,34 @@ body {
   font-weight: 500;
   border: none;
   background-color: var(--green);
+}
+/* Sign Up Media Query */
+@media screen and (max-width: 480px) {
+  .singUpSec {
+    padding: 30px 30px;
+    display: flex;
+    height: max-content;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .singUpSec .textSignUp {
+    margin-bottom: 20px;
+  }
+  .singUpSec .textSignUp h4 {
+    font-size: 2rem;
+  }
+  .singUpSec .textSignUp p {
+    font-size: 1.2rem;
+  }
+  .signUpForm {
+    width: 100%;
+    margin: 0;
+  }
+  .signUpForm .emailLabel #email {
+    width: 250px;
+    padding: 10px;
+  }
 }
 
 /*Footer Container*/
@@ -778,4 +975,33 @@ body {
 }
 .apple {
   margin-right: 10px;
+}
+
+/* Footer MEdia query */
+@media screen and (max-width: 480px) {
+  .footerCont {
+    padding: 70px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .footerCont .footerInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer {
+    font-size: 3rem;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .footerInfo .aboutUsSec {
+    margin-top: 20px;
+  }
+  .footerInfo .myAccountSec {
+    margin-top: 20px;
+  }
+  .footerInfo .installSec {
+    margin-top: 20px;
+  }
 }
