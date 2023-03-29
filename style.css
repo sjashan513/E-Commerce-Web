@@ -149,6 +149,7 @@ body {
     padding: 0;
     position: relative;
     width: 100vw;
+    position: sticky;
   }
   .logo {
     margin: 25px 0 25px 30px;
