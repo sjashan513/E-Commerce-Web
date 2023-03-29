@@ -351,6 +351,27 @@ body {
   }
 }
 
+@media screen and (max-width: 380px) {
+  .hero .shopNow {
+    top: 150px;
+  }
+  .hero h4 {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+  .hero h2 {
+    font-size: 3.25rem;
+  }
+  .hero h1 {
+    font-size: 3.75rem;
+  }
+  .hero p {
+    font-size: 1.15rem;
+  }
+  .hero {
+    background-position: 65% 10%;
+  }
+}
 /* Feature section */
 
 .feature {
@@ -573,6 +594,7 @@ body {
   }
   .titleOfSec h2 {
     font-size: 2.4rem;
+    word-spacing: 0;
   }
   .titleOfSec p {
     font-size: 1rem;
@@ -744,7 +766,9 @@ body {
   }
   .firstContainerBanner .bannerContainer {
     width: 100%;
+    background-position: 57.5% center;
   }
+
   .banner .secondContainerBanner {
     display: flex;
     flex-direction: column;
@@ -852,11 +876,25 @@ body {
   }
 }
 
+@media screen and (max-width: 380px) {
+  .singUpSec .textSignUp h4 {
+    font-size: 1.75rem;
+  }
+  .singUpSec .textSignUp p {
+    font-size: 1rem;
+  }
+
+  .signUpForm .emailLabel #email {
+    width: 200px;
+    font-size: 1rem;
+  }
+}
 /*Footer Container*/
 .footerCont {
   display: grid;
+  border: 2px solid rebeccapurple;
   grid-template-rows: 1fr 0.1fr;
-  padding: 100px 100px;
+  padding: 100px 130px 0 130px;
 }
 .footerCont .footerInfo {
   display: grid;
@@ -962,7 +1000,7 @@ body {
   font-size: 1.25rem;
   margin-bottom: 15px;
 }
-.installSec .apple,
+.installSec .installWrap .apple,
 .playstore {
   border: none;
   background-color: transparent;
@@ -971,13 +1009,24 @@ body {
   margin-bottom: 15px;
   cursor: pointer;
 }
-.installSec button img {
+.installSec {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.installSec .installWrap button img {
   border-radius: 15px;
 }
 .apple {
   margin-right: 10px;
 }
-
+.footer {
+  font-size: 3rem;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Footer MEdia query */
 @media screen and (max-width: 480px) {
   .footerCont {
