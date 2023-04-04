@@ -24,9 +24,20 @@ html {
   scroll-behavior: "smooth";
 }
 ::-webkit-scrollbar {
-  display: none;
+  width: 0.5em;
+  transition: all 0.3 ease;
 }
-/* Global Styles */
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 30px;
+}
+::-webkit-scrollbar-track {
+  background: var(--heroBG);
+  margin-block: 0.1em;
+  border-radius: 30px;
+}
+/* #region Home page */
+/* #region Global things */
 
 h1 {
   font-size: 50px;
@@ -75,8 +86,8 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
-
-/* Header section*/
+/* #endregion */
+/* #region Header section*/
 .header {
   display: flex;
   align-items: center;
@@ -268,8 +279,8 @@ body {
     padding-right: 20px;
   }
 }
-
-/* Section 1 hero */
+/* #endregion */
+/* #region Section 1 hero */
 
 .hero {
   background-image: url("./img/hero4.webp");
@@ -427,7 +438,8 @@ body {
     background-position: 65% 10%;
   }
 }
-/* Feature section */
+/* #endregion */
+/* #region Feature section */
 
 .feature {
   width: 100%;
@@ -437,9 +449,7 @@ body {
   justify-content: center;
   position: relative;
 }
-.feature::-webkit-scrollbar {
-  display: none;
-}
+
 .feBoxContainer {
   width: 100%;
   height: 100%;
@@ -508,13 +518,17 @@ body {
     margin-bottom: 20px;
   }
 }
-/* Featured Products*/
+/* #endregion */
+/* #region Featured Products*/
 .feaProducts {
   width: 100%;
   display: grid;
-  height: max-content;
-  grid-template-rows: 1fr 3fr;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
   padding: 0 80px;
+  grid-template-rows: 1fr 3fr;
 }
 .feaProducts .titleOfSec {
   width: 100%;
@@ -676,8 +690,8 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
-/*Explore More*/
+/* #endregion */
+/* #region Explore More*/
 .exploreMore {
   width: 100%;
   height: 325px;
@@ -737,8 +751,8 @@ body {
     font-size: 1rem;
   }
 }
-
-/*Banner Section*/
+/* #endregion */
+/* #region Banner Section*/
 .banner {
   width: 100vw;
   padding: 5rem 80px;
@@ -858,11 +872,12 @@ body {
     padding: 30px;
   }
 }
-/*Sing Up Section*/
+/* #endregion */
+/* #region Sing Up Section*/
 
 .singUpSec {
   width: 100%;
-  height: 200px;
+  height: 250px;
   background-color: #041e42;
   background-image: url(./img/banner/b14.webp);
   background-repeat: no-repeat;
@@ -990,10 +1005,10 @@ body {
     font-size: 1rem;
   }
 }
-/*Footer Container*/
+/* #endregion */
+/* #region Footer Container*/
 .footerCont {
   display: grid;
-  border: 2px solid rebeccapurple;
   grid-template-rows: 1fr 0.1fr;
   padding: 100px 130px 0 130px;
 }
@@ -1175,3 +1190,82 @@ body {
     margin-top: 20px;
   }
 }
+/* #endregion */
+/* #endregion */
+/* #region Shop page */
+/* Header, footer, signupSection are same as in the home page */
+/* #region stayhome */
+.stayHomeCont {
+  width: 100%;
+  height: 350px;
+  background-image: url(./img/banner/b1.jpg);
+  display: flex;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  background-position: center 40%;
+  justify-content: center;
+}
+.stayHomeCont h2 {
+  color: white;
+  font-size: 5.5rem;
+  font-weight: 500;
+}
+.stayHomeCont p {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+/* #endregion */
+/* #region Products */
+.shopPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 80px 50px 80px;
+}
+
+.feaProducts .shopProd {
+  width: 100%;
+  height: max-content;
+  display: grid;
+  /* Center in the grid */
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 340px));
+  grid-template-rows: auto;
+}
+
+.shopPage .hidden {
+  display: none;
+}
+.shopPage .nextButton {
+  display: flex;
+  align-items: center;
+  margin: 60px;
+}
+.shopPage .nextButton button {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--green);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+.shopPage .nextButton button:last-of-type {
+  width: 80px;
+  font-size: 25px;
+}
+/* #endregion */
+/* #endregion */

@@ -1,5 +1,5 @@
+// #region Home Page
 // Script for navigation bar
-
 //NavBar Variables
 const header = document.getElementById("header");
 const navOverlay = document.querySelector(".navOverlay");
@@ -75,3 +75,4 @@ window.addEventListener("scroll", (e) => {
   underlineFunc(elementTopFea, titleFea);
   underlineFunc(elementTopNew, titleNew);
 });
+//#endregion
